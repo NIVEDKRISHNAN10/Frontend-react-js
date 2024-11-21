@@ -10,7 +10,7 @@ const App = () => {
   
   return (
     <Router>
-      <Navbar /> {/* This renders the Navbar component on every page */}
+      {/* <Navbar /> This renders the Navbar component on every page */}
       <div>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
