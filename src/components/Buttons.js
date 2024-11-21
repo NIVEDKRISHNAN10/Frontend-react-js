@@ -14,9 +14,9 @@ const CustomButton = ({ children, onClick, disabled = false, color = "primary", 
         padding: 1.5,
         textShadow:20,
         boxShadow:5,
-        backgroundColor: color === "primary" ? "#7809daf5" : "#450774f5", // Violet color as alternative
+        backgroundColor: color === "primary" ? "#7809daf5" : {color}, // Violet color as alternative
         "&:hover": {
-          backgroundColor: color === "primary" ? "#450774f5" : "#7b1fa2",
+          backgroundColor: color === "primary" ? "#450774f5" : {color},
         },
       }}
       {...props}
