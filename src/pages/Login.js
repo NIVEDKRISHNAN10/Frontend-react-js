@@ -6,12 +6,13 @@ import {
   TextField,
   ThemeProvider,
   Typography,
+  CircularProgress,
+  Alert,
 } from "@mui/material";
 import React, { useState } from "react";
 import config from "./config";
 import axios from "axios";
-import CustomButton from "../components/Buttons";
-import TextFieldTheme from "../components/TextFieldTheme";
+import Logoimage from "../components/Logoimge";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -57,11 +58,13 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
+
   const theme = createTheme();
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Logoimage src="/images/logo.png" alt="Profile" size={90} />
       <Box
         sx={{
           display: "flex",
@@ -148,45 +151,67 @@ const LoginPage = () => {
               >
                 Login
               </Typography>
-              <TextField
-                label="Email"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "10px", // Curved edges
-                  },
-                  fontFamily: "Figtree, sans-serif",
-                }}
-              />
-              <TextField
-                label="Password"
-                type="password"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "10px", // Curved edges
-                  },
-                  fontFamily: "Figtree, sans-serif",
-                }}
-              />
-              <Button
-                fullWidth
-                variant="contained"
-                sx={{
-                  mt: 2,
-                  backgroundColor: "#4385e0",
-                  borderRadius: "10px", // Curved edges
-                  "&:hover": {
-                    backgroundColor: "#0a0a50", // Darker shade on hover
-                  },
-                }}
-              >
-                Login
-              </Button>
+
+              {error && (
+                <Alert severity="error" sx={{ marginBottom: 2 }}>
+                  {error}
+                </Alert>
+              )}
+
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  label="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "10px",
+                    },
+                    fontFamily: "Figtree, sans-serif",
+                  }}
+                />
+                <TextField
+                  label="Password"
+                  name="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "10px",
+                    },
+                    fontFamily: "Figtree, sans-serif",
+                  }}
+                />
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  disabled={loading}
+                  sx={{
+                    mt: 2,
+                    backgroundColor: "#4385e0",
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "#0a0a50",
+                    },
+                  }}
+                >
+                  {loading ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    "Login"
+                  )}
+                </Button>
+              </form>
+
               <Typography textAlign="center" marginTop={2}>
                 Don't have an account? <a href="/register">Sign Up</a>
               </Typography>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ThemeProvider, CssBaseline, Box, Typography, Button, TextField } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
+import Logoimage from "../components/Logoimge";
 
 const theme = createTheme();
 
@@ -8,6 +9,7 @@ const RegisterPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Logoimage src="/images/logo.png" alt="Profile" size={90} />
       <Box
         sx={{
           display: "flex",

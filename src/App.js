@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Router>
       {/* <Navbar /> This renders the Navbar component on every page */}
-      <Logoimage src="/images/logo.png" alt="Profile" size={90} />
+      {/* <Logoimage src="/images/logo.png" alt="Profile" size={90} /> */}
       <div>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
