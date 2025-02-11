@@ -12,6 +12,7 @@ import {
 import React, { useState } from "react";
 import config from "./config";
 import axios from "axios";
+import Logoimage from "../components/Logoimge";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -63,6 +64,7 @@ const LoginPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Logoimage src="/images/logo.png" alt="Profile" size={90} />
       <Box
         sx={{
           display: "flex",
@@ -202,7 +204,11 @@ const LoginPage = () => {
                     },
                   }}
                 >
-                  {loading ? <CircularProgress size={24} color="inherit" /> : "Login"}
+                  {loading ? (
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (
+                    "Login"
+                  )}
                 </Button>
               </form>
 
